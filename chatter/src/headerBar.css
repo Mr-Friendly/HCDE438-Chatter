@@ -1,0 +1,26 @@
+  .app-header {
+    height: 4rem;
+    width: 100vw;
+    border-bottom: 2px solid white;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .app-logo {
+    height: 3.5rem;
+    width: 3.5rem;
+    background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.edbourqueconsulting.com%2Fwp-content%2Fuploads%2F2016%2F12%2FPEO-hear_no_evil_monkey.svg_.png&f=1&nofb=1");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50vw;
+    border: 1px solid white;
+    margin-left: 1rem;
+  }
+  .app-title {
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-left: 1rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }

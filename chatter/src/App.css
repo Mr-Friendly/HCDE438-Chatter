@@ -1,0 +1,48 @@
+
+html {
+  font-size: 14px;
+}
+
+/* tablet */
+@media only screen and (min-width: 480px) {
+  html {
+      font-size: 16px;
+  }
+}
+
+/* desktop */
+@media only screen and (min-width: 768px) {
+  html {
+      font-size: 18px;
+  }
+}
+
+/* extra large */
+@media only screen and (min-width: 1024px) {
+  html {
+      font-size: 20px;
+  }
+}
+
+.App {
+  background :linear-gradient(180deg, rgba(13,0,36,1) 0%, rgba(2,0,36,1) 66%, rgb(85, 0, 18) 100%);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.firefly{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index:1
+}
