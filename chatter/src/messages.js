@@ -1,13 +1,22 @@
 import './messages.css';
 
-function dispMessage() {
-    return (
-        <div className = "messages">
-            <p className = "message">Test </p>
-            <p className = "message">Another test </p>
-            <p className = "message">Test 3</p>
-        </div>
-    );
+function Message(msg) {
+    // add the date
+    // add the username
+    // add a pic
+    return <div className="message">{msg}</div>;
 }
 
-export default dispMessage;
+function DispMessage(messageArr) {
+    return (
+        <div className = "messages">
+            {
+                messageArr.map((msg) => {
+                    return(<Message {...msg}/>)
+                })
+            }
+        </div>
+    )
+}
+
+export default DispMessage;

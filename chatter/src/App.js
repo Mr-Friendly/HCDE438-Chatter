@@ -1,18 +1,17 @@
 // You will need to install firefly-react to get this firefly effect to work!
 
 import './App.css';
-import headerBar from './headerBar';
-import sendMessages from './sendMessages';
-import dispMessage from './messages';
+import HeaderBar from './headerBar';
+import SendMessages from './sendMessages';
+
 
 import Firefly from "firefly-react";
 import { useState } from "react";
 
 
 function App() {
-  const header = headerBar();
-  const footer = sendMessages();
-  const messages = dispMessage();
+  const header = HeaderBar();
+  const messageInput = SendMessages();
 
   const [canvasHeight, setCanvasHeight] = useState(window.innerHeight);
   const [canvasWidth, setCanvasWidth] = useState(window.innerWidth);
@@ -38,8 +37,7 @@ function App() {
       <div className = "App">
           { header }
           { fireflyComponent }
-          { messages }
-          { footer }
+          { messageInput }
       </div>
     );
 

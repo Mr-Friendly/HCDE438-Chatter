@@ -1,7 +1,7 @@
 import React from 'react';
 import './headerBar.css';
 
-function headerBar() {
+function HeaderBar() {
     return (
         <header className="app-header">
             <div className="app-logo" />
@@ -9,4 +9,4 @@ function headerBar() {
         </header>
     );
 }
-  export default headerBar;
+  export default HeaderBar;
