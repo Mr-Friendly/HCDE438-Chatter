@@ -1,20 +1,25 @@
 import './messages.css';
 
-function Message(msg) {
-    // add the date
-    // add the username
-    // add a pic
-    return <div className="message">{msg}</div>;
-}
 
-function DispMessage(messageArr) {
+function DispMessage(props) {
+
+    function Message(props) {
+        // Other properties can be displayed here.
+        return (
+
+        <div className="message">
+            {props.text}
+        </div>
+
+        );
+    }
+
     return (
+        ////Loops through the messagesList and displays from top to bottom
         <div className = "messages">
-            {
-                messageArr.map((msg) => {
-                    return(<Message {...msg}/>)
-                })
-            }
+            {props.Messages.map((msg) => {
+                return <Message {...msg} />;
+            })}
         </div>
     )
 }
