@@ -7,12 +7,28 @@
     background: none;
     position: absolute;
     bottom: 4rem;
+    width:fit-content;
   }
-  .message {
+
+  .sent {
+    display: flex;
     color: white;
     background: black;
     padding: 0.5rem 1rem;
     margin: 0.2rem;
     border-radius: 0.3rem;
     border-bottom-left-radius:0rem;
+    left: 1rem;
   }
+
+  .recieved {
+    display: flex;
+    color: white;
+    background: black;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem;
+    border-radius: 0.3rem;
+    border-bottom-right-radius:0rem;
+    right: 1rem;
+  }
+
