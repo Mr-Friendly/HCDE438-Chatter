@@ -3,37 +3,35 @@ import './messages.css';
 
 function DispMessage(props) {
 
-    function Sent(props) {
+    function Message(props) {
+        let outMess = <div />
         // Other properties can be displayed here.
+        if (props.user === "You") {
+            outMess = (
+                <div className="sent">
+                    {props.text}
+                </div>
+            );
+        } else {
+            outMess = (
+                <div className="recieved">
+                    {props.text}
+                </div>
+            );
+        }
+
         return (
-
-        <div className="sent">
-            {props.text}
-        </div>
-
-        );
-    }
-
-    function Recieved(props) {
-        // Other properties can be displayed here.
-        return (
-
-        <div className="recieved">
-            {props.text}
-        </div>
-
+            <div className = "messageBar">
+                { outMess }
+            </div>
         );
     }
 
     return (
         ////Loops through the messagesList and displays from top to bottom
-        <div className = "messages">
+        <div className = "messageScreen">
             {props.Messages.map((msg) => {
-                return <Sent {...msg} />;
-            })}
-
-            {props.Messages.map((msg) => {
-                return <Recieved {...msg} />;
+                return <Message {...msg} />;
             })}
         </div>
     )

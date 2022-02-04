@@ -1,9 +1,12 @@
 import './sendMessages.css';
 import React, { useState } from "react";
 import DispMessage from './messages';
+import { FiSend, FiCamera } from 'react-icons/fi'
+import Camera from 'react-snap-pic'
 
 //Takes text input AND displays them using DispMessage
 const SendMessages = () => {
+    const [showCamera, setShowCamera] = useState(false)
     // Creates a useState array to store messages.
     const [messagesList, setMessagesList] = useState([]);
 
@@ -34,9 +37,16 @@ const SendMessages = () => {
         }
     }
 
+    function takeMyPicture(img) {
+        console.log(img)
+        setShowCamera(false)
+    }
+
     return (
         <>
             <DispMessage Messages = { messagesList }></DispMessage>
+            {showCamera && <Camera takePicture={takeMyPicture} />}
+
             <footer className="app-footer">
                 <input
                     className="text-input"
@@ -46,6 +56,9 @@ const SendMessages = () => {
                     onKeyPress={onKeyPress}
                 />
                 <button className="send-button" onClick = {send}>&#x21E7;</button>
+                <button onClick={()=>setShowCamera(true)} className="camera-button">
+                    <FiCamera style={{height:15, width:15}} />
+                </button>
             </footer>
         </>
     )
