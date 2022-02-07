@@ -1,25 +1,31 @@
 import './sendMessages.css';
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect }  from "react";
 import DispMessage from './messages';
-import { FiSend, FiCamera } from 'react-icons/fi'
-import Camera from 'react-snap-pic'
+import { FiSend, FiCamera } from 'react-icons/fi';
+import Camera from 'react-snap-pic';
 
 //Takes text input AND displays them using DispMessage
-const SendMessages = () => {
+const SendMessages = (props) => {
+
+
+    //Tells Camera whether to be on or off.
     const [showCamera, setShowCamera] = useState(false)
+
     // Creates a useState array to store messages.
     const [messagesList, setMessagesList] = useState([]);
 
     // Creates a useState string to store our user input.
-    const [messageText, setText] = useState("");
+    const [messageText, setText] = useState("           ");
 
     // Creates a newMessage object containing text, time, and the user and
     // appends it to the messagesList.
+    // now with username support!
     function addMessage(text) {
+        if (!text.trim()) return;
         const newMessage = {
             text,
             time: Date.now(),
-            user: "You",
+            user: props.username,
         };
         setMessagesList([newMessage, ...messagesList]);
     }
@@ -27,7 +33,7 @@ const SendMessages = () => {
     // Calls addMessage with messageTExt and clears the input.
     function send() {
         addMessage(messageText);
-        setText("");
+        setText("           ");
     }
 
     // Calls send when Enter is pressed.
@@ -64,5 +70,5 @@ const SendMessages = () => {
     )
 }
 
-export default SendMessages;
+export default (SendMessages);
 

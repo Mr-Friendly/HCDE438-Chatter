@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     background: rgba(255, 255, 255, 0.3);
+    flex-direction:row;
   }
   .app-logo {
     height: 3.5rem;
@@ -16,6 +17,8 @@
     border-radius: 50vw;
     border: 1px solid white;
     margin-left: 1rem;
+    left:0;
+    display:flex;
   }
   .app-title {
     color: white;
@@ -24,3 +27,33 @@
     margin-left: 1rem;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
+.setName {
+  display:flex;
+  position:absolute;
+  width: 20vw;
+  border: 1px solid white;
+  height: 2rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  background: rgba(0, 0, 0, 0.603);
+  right: 3rem;
+  color: white;
+  z-index:1000;
+}
+
+.yourName {
+  background-color:transparent;
+  margin:1rem;
+  border-color:rgb(255, 238, 7);
+  border-radius: 2rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  right: 2rem;
+  height:3rem;
+  width:10rem;
+  position: absolute;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 1001;
+}

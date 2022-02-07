@@ -9,13 +9,15 @@ function DispMessage(props) {
         if (props.user === "You") {
             outMess = (
                 <div className="sent">
-                    {props.text}
+                    <p className = 'senText'> {props.text} </p>
+                    <p className = 'mainuser'> {props.user} </p>
                 </div>
             );
         } else {
             outMess = (
                 <div className="recieved">
-                    {props.text}
+                    <p className = 'recText'> {props.text} </p>
+                    <p className = 'otheruser'> {props.user} </p>
                 </div>
             );
         }

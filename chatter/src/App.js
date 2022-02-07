@@ -6,24 +6,39 @@ import SendMessages from './sendMessages';
 
 
 import Firefly from "firefly-react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 
-function App() {
+function App () {
   //Constructs the header and message screen (+ text input) respectively
-  const header = HeaderBar();
-  const messageInput = SendMessages();
+
+
+  // get the font size to help reshape the firefly canvas as necessary
+  var style = window.getComputedStyle(document.body);
+  var fontSize = parseInt(style.getPropertyValue('font-size'));
 
   // useState variables for tracking canvas height, used for the firefly effect.
-  const [canvasHeight, setCanvasHeight] = useState(window.innerHeight);
+  const [canvasHeight, setCanvasHeight] = useState((window.innerHeight) - (8*fontSize));
   const [canvasWidth, setCanvasWidth] = useState(window.innerWidth);
+  const [name, setName] = useState("");
+
+  // Used to update the username in local storage
+  var user = (text) => {
+    localStorage.setItem('Name', text)
+  }
+
+  //Updates the local name so it can be passed around.
+  function updateName(text) {
+    setName(text);
+    user(text);
+  }
 
   // Adds an eventListener to track when the window is resized, which will then update the
   // canvas height based on the new window size.
   window.addEventListener(
     "resize",
     (e) => {
-    setCanvasHeight(window.innerHeight);
+    setCanvasHeight((window.innerHeight) - (8*fontSize));
     setCanvasWidth(window.innerWidth);
     },
     false
@@ -42,15 +57,15 @@ function App() {
   // Returns everything in a single styled div so React can render it.
   const appSpace = (
       <div className = "App">
-          { header }
+          <HeaderBar sendName = {updateName}/>
           { fireflyComponent }
-          { messageInput }
+          <SendMessages username = {name}/>
       </div>
     );
 
   return (
     appSpace
     );
-  }
+}
 
 export default App;
