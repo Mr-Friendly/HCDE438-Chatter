@@ -10,10 +10,13 @@ function HeaderBar(props) {
     // check to see if user has any local data stored. If so, starts them as remembered
     var localName = "   ";
     var rememberMe = false;
-    if (localStorage.getItem('Name').trim()) {
+    try {
+        (localStorage.getItem('Name'))
         localName = localStorage.getItem('Name');
         props.sendName(localName);
         rememberMe = true;
+    } catch (error) {
+        console.error(error);
     }
 
     // useStats for setting and updating name
@@ -28,7 +31,7 @@ function HeaderBar(props) {
     }
 
     function send() {
-        var user = nameText.trim();
+        var user = nameText;
         props.sendName(user);
         setText("   ");
         setEditName(true);
