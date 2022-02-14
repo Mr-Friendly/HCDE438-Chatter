@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect }  from "react";
 import DispMessage from './messages';
 import { FiSend, FiCamera } from 'react-icons/fi';
 import Camera from 'react-snap-pic';
+import {useDB, db} from './db';
 
 //Takes text input AND displays them using DispMessage
 const SendMessages = (props) => {
@@ -12,7 +13,8 @@ const SendMessages = (props) => {
     const [showCamera, setShowCamera] = useState(false)
 
     // Creates a useState array to store messages.
-    const [messagesList, setMessagesList] = useState([]);
+    //const [messagesList, setMessagesList] = useState([]);
+    const messagesList = useDB();
 
     // Creates a useState string to store our user input.
     const [messageText, setText] = useState("           ");
@@ -20,14 +22,16 @@ const SendMessages = (props) => {
     // Creates a newMessage object containing text, time, and the user and
     // appends it to the messagesList.
     // now with username support!
+    // Now uses Firestore to store and work with data, instead of storing messages
+    // locally.
     function addMessage(text) {
         if (!text.trim()) return;
         const newMessage = {
             text,
-            time: Date.now(),
+            time: Date(Date.now()),
             user: props.username,
         };
-        setMessagesList([newMessage, ...messagesList]);
+        db.send(newMessage);
     }
 
     // Calls addMessage with messageTExt and clears the input.
@@ -47,10 +51,9 @@ const SendMessages = (props) => {
         console.log(img)
         setShowCamera(false)
     }
-
     return (
         <>
-            <DispMessage Messages = { messagesList }></DispMessage>
+            <DispMessage messages = { messagesList } localuser = {props.username}></DispMessage>
             {showCamera && <Camera takePicture={takeMyPicture} />}
 
             <footer className="app-footer">

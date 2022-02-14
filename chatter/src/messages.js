@@ -2,11 +2,11 @@ import './messages.css';
 
 
 function DispMessage(props) {
-
     function Message(props) {
         let outMess = <div />
         // Other properties can be displayed here.
-        if (props.user === "You") {
+        // Determines which username to display on the left
+        if (String(props.user) === String(props.localuser)) {
             outMess = (
                 <div className="sent">
                     <p className = 'senText'> {props.text} </p>
@@ -32,8 +32,8 @@ function DispMessage(props) {
     return (
         ////Loops through the messagesList and displays from top to bottom
         <div className = "messageScreen">
-            {props.Messages.map((msg) => {
-                return <Message {...msg} />;
+            {props.messages.map((msg) => {
+                return <Message localuser = {props.localuser} {...msg} />;
             })}
         </div>
     )
